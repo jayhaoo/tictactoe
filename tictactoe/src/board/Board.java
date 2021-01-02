@@ -4,7 +4,7 @@ package board;
 
 public class Board {
 	
-	/* Basic rules for tic tac toe */
+	/* Basic parameters for tic tac toe */
 	private static final int DEFAULT_ROWS = 3;
 	private static final int DEFAULT_COLUMNS = 3;
 	private static final int DEFAULT_IN_ROW_TO_WIN = 3;
