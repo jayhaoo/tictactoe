@@ -13,7 +13,7 @@ public class Board {
 	private int columns;
 	private int inRowToWin;
 	//private Cell[][] cells;
-	//private BoardView view;
+	private BoardView view;
 	//private ArrayList<Sequence> sequences;
 	//private Sequence winningSequence;
 	
@@ -21,6 +21,9 @@ public class Board {
 		rows = DEFAULT_ROWS;
 		columns = DEFAULT_COLUMNS;
 		inRowToWin = DEFAULT_IN_ROW_TO_WIN;
+		view = new BoardView(rows, columns);
+		
+		
 	}
 	
 	
