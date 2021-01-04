@@ -26,4 +26,105 @@ public class DrawableLine {
 	static private Random rand = new Random(10);
 	static private JFrame frame = null;
 	
+	private final Point topLeft;
+	private Point[] points;
+	private Color color;
+	private boolean withVertices;
+	private boolean removed;
+	
+	DrawableLine (Point start, Point end) {
+		this(start, end, true);
+	}
+	
+	DrawableLine (Point start, Point end, boolean withVertices) {
+		if (frame == null) {
+			initializeFrame();
+		}
+		
+		points = new Point[] {start, end};
+		this.withVertices = withVertices;
+		
+		color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+		removed = false;
+		
+		topLeft = new Point (
+			start.getX() < end.getX() ? start.getX() : end.getX(), 
+			start.getY() < end.getY() ? start.getY() : end.getY());
+		
+		/*
+		setBounds(
+					topLeft.getX() - BOUNDS_BUFFER,
+					topLeft.getY() - BOUNDS_BUFFER,
+					Math.abs(start.getX() - end.getX()) + 2 * BOUNDS_BUFFER,
+					Math.abs(start.getY() - end.getY()) + 2 * BOUNDS_BUFFER);
+		frame.add(this, 0);
+		*/
+		frame.validate();
+		frame.repaint();
+	}
+	
+	private static void initializeFrame() {
+		frame = new JFrame();
+		frame.setTitle(FRAME_TITLE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		JPanel contentPane = new JPanel();
+		contentPane.setLayout(null);
+		contentPane.setPreferredSize(START_FRAME_DIMS);
+		frame.setContentPane(contentPane);
+		contentPane.setOpaque(true);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	void remove() {
+		removed = true;
+		frame.revalidate();
+		frame.repaint();
+	}
+	
+	Point getStart() {
+		return points[0];
+	}
+	
+	Point getEnd() {
+		return points[1];
+	}
+	
+	/*
+	@Override
+	protected void paintComponent(Graphics g) {
+		if (removed) {
+			return;
+		}
+		
+		//super.paintComponent(g);
+		
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(color);
+		g2.setStroke(new BasicStroke(LINE_WIDTH));
+		g2.draw(new Line2D.Float(
+					points[0].getX() - topLeft.getX() + BOUNDS_BUFFER,
+					points[0].getY() - topLeft.getY() + BOUNDS_BUFFER,
+					points[1].getX() - topLeft.getX() + BOUNDS_BUFFER,
+					points[1].getY() - topLeft.getY() + BOUNDS_BUFFER));
+		g2.setColor(Color.black);
+		if (withVertices) {
+			for (int i = 0; i < 2; i++) {
+				Ellipse2D.Double circle = new Ellipse2D.Double(
+						points[i].getX() - topLeft.getY() - VERTEX_SIZE / 2 + BOUNDS_BUFFER,
+						points[i].getY() - topLeft.getY() - VERTEX_SIZE / 2 + BOUNDS_BUFFER,
+						VERTEX_SIZE, VERTEX_SIZE);
+				g2.fill(circle);
+			}
+		}
+		
+	}
+	*/
+	
 }
+
+
+
+
+
+
