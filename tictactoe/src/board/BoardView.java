@@ -17,4 +17,10 @@ public class BoardView {
 		
 		
 	}
+	
+	Marker displayMarker(Cell cell) {
+		return MarkerFactory.getMarker(cell.getType(), CELL_SIDE - 2 * PADDING, 
+				MARGIN + cell.getColumn() + PADDING,
+				MARGIN + cell.getRow() * CELL_SIDE + PADDING);
+	}
 }

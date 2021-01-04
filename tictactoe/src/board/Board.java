@@ -23,7 +23,6 @@ public class Board {
 		inRowToWin = DEFAULT_IN_ROW_TO_WIN;
 		view = new BoardView(rows, columns);
 		
-		
 	}
 	
 	
