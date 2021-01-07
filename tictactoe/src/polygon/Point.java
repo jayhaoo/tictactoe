@@ -31,4 +31,9 @@ public class Point {
 		return (otherPoint.x == x && otherPoint.y == y);
 	}
 	
+	@Override
+	public String toString() {
+		return "[" + x + "," + y + "]";
+	}
+	
 }
