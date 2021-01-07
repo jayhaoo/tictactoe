@@ -9,15 +9,15 @@ public class BoardView extends LineList {
 	private static final int MARGIN = 10;
 	private static final int PADDING = 5;
 	
-	//private int rows;
-	//private int columns;
+	private int rows;
+	private int columns;
 	private WinLine winLine;
 	
 	public BoardView(int rows, int columns) {
-		//this.rows = rows;
-		//this.columns = columns;
-		rows = 3;
-		columns = 3;
+		this.rows = rows;
+		this.columns = columns;
+		//rows = 3;
+		//columns = 3;
 		winLine = null;
 		
 		/* Vertical Lines */

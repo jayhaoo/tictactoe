@@ -90,8 +90,6 @@ public class DrawableLine {
 		return points[1];
 	}
 	
-	/*
-	@Override
 	protected void paintComponent(Graphics g) {
 		if (removed) {
 			return;
@@ -119,7 +117,6 @@ public class DrawableLine {
 		}
 		
 	}
-	*/
 	
 }
 

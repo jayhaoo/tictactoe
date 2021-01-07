@@ -12,11 +12,11 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String args[]) {
-		System.out.println("Hello world!");
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		new HumanPlayer("Jason");
+		new HumanPlayer("Rick");
 		ArrayList<Player> playerList = Player.getPlayers();
 		
 		Board board = new Board();
@@ -29,12 +29,12 @@ public class Main {
 			for (int i = 0; i < 2; i++) {
 				while (players[i] == null) {
 					System.out.println("Select Player# " + i 
-							+ "[" + (i == 0 ? MarkerType.X : MarkerType.O) + "'s");
+							+ " [" + (i == 0 ? MarkerType.X : MarkerType.O) + "'s]");
 					for (int j = 0; j < playerList.size(); j++) {
 						if (i == 1 && playerList.get(j) == players[0]) {
 							continue;
 						}
-						System.out.println(j + "." + playerList.get(j).getName());
+						System.out.println(j + " - " + playerList.get(j).getName());
 					}
 					String playerChoice = scanner.nextLine();
 					int numberChoice = 0;
@@ -47,7 +47,7 @@ public class Main {
 					players[i] = playerList.get(numberChoice);
 				}
 			}
-			
+			/*
 			int currentPlayer = 1;
 			while (board.hasNextPlay()) {
 				currentPlayer = (currentPlayer + 1) % 2;
@@ -72,7 +72,8 @@ public class Main {
 			if (toContinue.toUpperCase().contentEquals("Q")) {
 				break;
 			}
+			*/
 		}
-		System.out.println("Bye");
+		//System.out.println("Bye");
 	}
 }
