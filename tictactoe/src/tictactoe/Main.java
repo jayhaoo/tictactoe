@@ -53,14 +53,10 @@ public class Main {
 				}
 			}
 			
-			System.out.println("Player 1 : " + players[0].getName());
-			System.out.println("Player 2 : " + players[1].getName());
-			
 			int currentPlayer = 1;
 			while (board.hasNextPlay()) {
 				currentPlayer = (currentPlayer + 1) % 2;
 				MarkerType currentType = currentPlayer == 0 ? MarkerType.X : MarkerType.O;
-				System.out.println("Current player: " + currentPlayer);
 				boolean playOk = false;
 				while (!playOk) {
 					Point point = players[currentPlayer].getPlay(currentType, board);

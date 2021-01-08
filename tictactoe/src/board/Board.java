@@ -41,6 +41,7 @@ public class Board {
 				sequences.add(new Sequence(i, 0, 0, i));
 			}
 		}
+		
 		for (int i = 0; i < columns; i++) {
 			sequences.add(new Sequence(0, i, rows - 1, i));
 			if (i != 0 && columns - 1 >= inRowToWin) {
@@ -50,7 +51,6 @@ public class Board {
 				sequences.add(new Sequence(rows - 1, i, i, columns - 1));
 			}
 		}
-		
 	}
 	
 	public boolean playMarker(MarkerType type, int row, int column) {
@@ -65,7 +65,6 @@ public class Board {
 	}
 	
 	public boolean hasWinner() {
-		System.out.println("hasWinner()");
 		if (winningSequence != null) {
 			return true;
 		}
@@ -90,12 +89,9 @@ public class Board {
 	}
 	
 	public boolean hasNextPlay() {
-		System.out.println("hasNextPlay");
 		if (hasWinner()) {
-			System.out.println("Has winner");
 			return false;
 		}
-		System.out.println("doesnt have winner");
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				if (cells[i][j].getType() == null) {

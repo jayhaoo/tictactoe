@@ -14,10 +14,9 @@ public class BoardView extends LineList {
 	private WinLine winLine;
 	
 	public BoardView(int rows, int columns) {
+		setWithVertices(false);
 		this.rows = rows;
 		this.columns = columns;
-		//rows = 3;
-		//columns = 3;
 		winLine = null;
 		
 		/* Vertical Lines */
@@ -37,7 +36,7 @@ public class BoardView extends LineList {
 	
 	Marker displayMarker(Cell cell) {
 		return MarkerFactory.getMarker(cell.getType(), CELL_SIDE - 2 * PADDING, 
-				MARGIN + cell.getColumn() + PADDING,
+				MARGIN + cell.getColumn() + CELL_SIDE + PADDING,
 				MARGIN + cell.getRow() * CELL_SIDE + PADDING);
 	}
 	
@@ -55,7 +54,7 @@ public class BoardView extends LineList {
 		if (startRow == endRow) {
 			startYOffset = 0.5;
 			endYOffset = 0.5;
-			endYOffset = 1;
+			endXOffset = 1;
 		} else if (startColumn == endColumn) {
 			startXOffset = 0.5;
 			endXOffset = 0.5;
