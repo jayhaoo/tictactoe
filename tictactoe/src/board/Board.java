@@ -21,21 +21,32 @@ public class Board {
 		rows = DEFAULT_ROWS;
 		columns = DEFAULT_COLUMNS;
 		inRowToWin = DEFAULT_IN_ROW_TO_WIN;
+		winningSequence = null;
 		view = new BoardView(rows, columns);
-		sequences = new ArrayList<Sequence>();
-		cells = new Cell[rows][columns];
 		
+		cells = new Cell[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				cells[i][j] = new Cell(view, i, j);
 			}
 		}
+		
+		sequences = new ArrayList<Sequence>();
 		for (int i = 0; i < rows; i++) {
 			sequences.add(new Sequence(i, 0, i, columns - 1));
 			if (rows - i >= inRowToWin) {
 				sequences.add(new Sequence(i, 0, rows - 1, i + rows - 1));
 			}
 			if (i + 1 >= inRowToWin) {
+				sequences.add(new Sequence(i, 0, 0, i));
+			}
+		}
+		for (int i = 0; i < columns; i++) {
+			sequences.add(new Sequence(0, i, rows - 1, i));
+			if (i != 0 && columns - 1 >= inRowToWin) {
+				sequences.add(new Sequence(0, i, i + columns - 1, columns - 1));
+			}
+			if (i != 0 && columns - i + 1 >= inRowToWin) {
 				sequences.add(new Sequence(rows - 1, i, i, columns - 1));
 			}
 		}
@@ -54,6 +65,7 @@ public class Board {
 	}
 	
 	public boolean hasWinner() {
+		System.out.println("hasWinner()");
 		if (winningSequence != null) {
 			return true;
 		}
@@ -78,10 +90,12 @@ public class Board {
 	}
 	
 	public boolean hasNextPlay() {
+		System.out.println("hasNextPlay");
 		if (hasWinner()) {
+			System.out.println("Has winner");
 			return false;
 		}
-		
+		System.out.println("doesnt have winner");
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				if (cells[i][j].getType() == null) {

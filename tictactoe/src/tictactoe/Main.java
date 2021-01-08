@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Main {
 	
+	@SuppressWarnings("resource")
 	public static void main(String args[]) {
 		
 		Scanner scanner = new Scanner(System.in);
@@ -44,19 +45,27 @@ public class Main {
 						System.out.println("You must make a choice between 0 and " + (playerList.size() - 1));
 						continue;
 					}
-					players[i] = playerList.get(numberChoice);
+					try {
+						players[i] = playerList.get(numberChoice);
+					} catch (IndexOutOfBoundsException e) {
+						System.out.println("Invalid choice");
+					}
 				}
 			}
-			/*
+			
+			System.out.println("Player 1 : " + players[0].getName());
+			System.out.println("Player 2 : " + players[1].getName());
+			
 			int currentPlayer = 1;
 			while (board.hasNextPlay()) {
 				currentPlayer = (currentPlayer + 1) % 2;
 				MarkerType currentType = currentPlayer == 0 ? MarkerType.X : MarkerType.O;
+				System.out.println("Current player: " + currentPlayer);
 				boolean playOk = false;
 				while (!playOk) {
 					Point point = players[currentPlayer].getPlay(currentType, board);
-					System.out.println("Player #" + currentPlayer + " " 
-							+ players[currentPlayer].getName() + " plays at " + point);
+					System.out.println("Player #" + currentPlayer + " " + players[currentPlayer].getName() + " plays at " + point);
+					playOk = board.playMarker(currentType, point.getX(), point.getY());
 					if (!playOk) {
 						System.out.println("Invalid play, try again");
 					}
@@ -72,8 +81,8 @@ public class Main {
 			if (toContinue.toUpperCase().contentEquals("Q")) {
 				break;
 			}
-			*/
+			
 		}
-		//System.out.println("Bye");
+		System.out.println("Bye");
 	}
 }
