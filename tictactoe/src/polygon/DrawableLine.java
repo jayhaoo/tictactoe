@@ -1,5 +1,6 @@
 package polygon;
 
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 
-public class DrawableLine {
+public class DrawableLine extends JComponent {
 	
 	static private final String FRAME_TITLE = "LINE DRAWER";
 	static private final Dimension START_FRAME_DIMS = new Dimension(420, 420);
@@ -51,14 +52,13 @@ public class DrawableLine {
 			start.getX() < end.getX() ? start.getX() : end.getX(), 
 			start.getY() < end.getY() ? start.getY() : end.getY());
 		
-		/*
 		setBounds(
 					topLeft.getX() - BOUNDS_BUFFER,
 					topLeft.getY() - BOUNDS_BUFFER,
 					Math.abs(start.getX() - end.getX()) + 2 * BOUNDS_BUFFER,
 					Math.abs(start.getY() - end.getY()) + 2 * BOUNDS_BUFFER);
 		frame.add(this, 0);
-		*/
+		
 		frame.validate();
 		frame.repaint();
 	}
@@ -90,12 +90,13 @@ public class DrawableLine {
 		return points[1];
 	}
 	
-	protected void paintComponent(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		if (removed) {
 			return;
 		}
 		
-		//super.paintComponent(g);
+		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
