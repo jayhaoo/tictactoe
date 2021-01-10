@@ -7,6 +7,13 @@ public class Sequence {
 	private int endRow;
 	private int endColumn;
 	
+	/**
+	 * 
+	 * @param startRow 
+	 * @param startColumn
+	 * @param endRow
+	 * @param endColumn
+	 */
 	Sequence(int startRow, int startColumn, int endRow, int endColumn) {
 		this.startRow = startRow;
 		this.startColumn = startColumn;
@@ -14,6 +21,13 @@ public class Sequence {
 		this.endColumn = endColumn;
 	}
 	
+	/**
+	 * 
+	 * Checks the board to see if there are any winners
+	 * @param cells Board
+	 * @param inRowToWin Number of in row to win
+	 * @return Sequence for winner
+	 */
 	Sequence getWinner(Cell[][] cells, int inRowToWin) {
 		Cell startCell = cells[startRow][startColumn];
 		int deltaX = startRow == endRow ? 0 : (startRow < endRow ? 1 : -1);
@@ -39,18 +53,34 @@ public class Sequence {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return startRow
+	 */
 	public int getStartRow() {
 		return startRow;
 	}
 	
+	/**
+	 * 
+	 * @return startColumn
+	 */
 	public int getStartColumn() {
 		return startColumn;
 	}
 	
+	/**
+	 * 
+	 * @return endRow
+	 */
 	public int getEndRow() {
 		return endRow;
 	}
 	
+	/**
+	 * 
+	 * @return endColumn
+	 */
 	public int getEndColumn() {
 		return endColumn;
 	}

@@ -6,10 +6,18 @@ public class Polygon extends LineList {
 	
 	ArrayList<Point> points;
 	
+	/**
+	 * Initialize arraylist of points
+	 */
 	public Polygon() {
 		points = new ArrayList<Point>();
 	}
 	
+	/**
+	 * 
+	 * @param x Add new point with x value
+	 * @param y Add new point with y value
+	 */
 	public void addPoint(int x, int y) {
 		Point newEndPoint = new Point(x, y);
 		points.add(newEndPoint);
@@ -33,10 +41,13 @@ public class Polygon extends LineList {
 		addLine(newEndPoint, startPoint);
 	}
 	
+	/**
+	 * 
+	 * @return Number of points in arraylist of points
+	 */
 	int getNumberVertices() {
 		return points.size();
 	}
-	
 }
 
 

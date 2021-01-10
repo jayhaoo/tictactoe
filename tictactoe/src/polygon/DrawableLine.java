@@ -1,6 +1,5 @@
 package polygon;
 
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,10 +14,14 @@ import java.awt.geom.Line2D;
 import java.util.Arrays;
 import java.util.Random;
 
-
+/**
+ * 
+ * @author jasonhao
+ * Draws the tic tac toe board
+ */
 public class DrawableLine extends JComponent {
 	
-	static private final String FRAME_TITLE = "LINE DRAWER";
+	static private final String FRAME_TITLE = "Tic Tac Toe";
 	static private final Dimension START_FRAME_DIMS = new Dimension(420, 420);
 	static private final int VERTEX_SIZE = 10;
 	static private final int LINE_WIDTH = 3;
@@ -33,10 +36,22 @@ public class DrawableLine extends JComponent {
 	private boolean withVertices;
 	private boolean removed;
 	
+	/**
+	 * 
+	 * Draws the line given a starting and ending position
+	 * @param start Starting point
+	 * @param end Ending point
+	 */
 	DrawableLine (Point start, Point end) {
 		this(start, end, true);
 	}
 	
+	/**
+	 * 
+	 * @param start Starting point
+	 * @param end Ending point
+	 * @param withVertices 
+	 */
 	DrawableLine (Point start, Point end, boolean withVertices) {
 		if (frame == null) {
 			initializeFrame();
@@ -63,6 +78,9 @@ public class DrawableLine extends JComponent {
 		frame.repaint();
 	}
 	
+	/**
+	 * Initialize the frame for the tictactoe board
+	 */
 	private static void initializeFrame() {
 		frame = new JFrame();
 		frame.setTitle(FRAME_TITLE);
@@ -76,16 +94,27 @@ public class DrawableLine extends JComponent {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Remove 
+	 */
 	void remove() {
 		removed = true;
 		frame.revalidate();
 		frame.repaint();
 	}
 	
+	/**
+	 * 
+	 * @return Starting point
+	 */
 	Point getStart() {
 		return points[0];
 	}
 	
+	/**
+	 * 
+	 * @return Ending point
+	 */
 	Point getEnd() {
 		return points[1];
 	}
@@ -116,9 +145,7 @@ public class DrawableLine extends JComponent {
 				g2.fill(circle);
 			}
 		}
-		
 	}
-	
 }
 
 

@@ -13,6 +13,11 @@ public class BoardView extends LineList {
 	private int columns;
 	private WinLine winLine;
 	
+	/**
+	 * 
+	 * @param rows Rows in board
+	 * @param columns Columns in board
+	 */
 	public BoardView(int rows, int columns) {
 		setWithVertices(false);
 		this.rows = rows;
@@ -34,12 +39,21 @@ public class BoardView extends LineList {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param cell Specific spot where to place marker
+	 * @return True if able to place marker at cell
+	 */
 	Marker displayMarker(Cell cell) {
 		return MarkerFactory.getMarker(cell.getType(), CELL_SIDE - 2 * PADDING, 
 				MARGIN + cell.getColumn() * CELL_SIDE + PADDING,
 				MARGIN + cell.getRow() * CELL_SIDE + PADDING);
 	}
 	
+	/**
+	 * 
+	 * @param sequence Draws line of the winning sequence
+	 */
 	void declareWinner(Sequence sequence) {
 		int startRow = sequence.getStartRow();
 		int startColumn = sequence.getStartColumn();
@@ -73,6 +87,9 @@ public class BoardView extends LineList {
 		winLine = new WinLine(startPoint, endPoint);
 	}
 	
+	/**
+	 * Resets the winner
+	 */
 	void resetWinner() {
 		if (winLine != null) {
 			winLine.delete();

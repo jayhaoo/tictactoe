@@ -1,3 +1,8 @@
+/**
+ * @author Jason Hao
+ * @date Jan 10 2021
+ */
+
 package tictactoe;
 
 import human.HumanPlayer;
@@ -16,6 +21,7 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		/* Initialize players */
 		new HumanPlayer("Jason");
 		new HumanPlayer("Rick");
 		ArrayList<Player> playerList = Player.getPlayers();
@@ -70,7 +76,7 @@ public class Main {
 			if (board.hasWinner()) {
 				System.out.println("Player #" + currentPlayer + " won!");
 			} else {
-				System.out.println("Game ended in  a tie.");
+				System.out.println("Game ended in a tie.");
 			}
 			System.out.println("Any key to continue or Q to quit: ");
 			String toContinue = scanner.nextLine();
