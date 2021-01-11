@@ -6,6 +6,7 @@
 package tictactoe;
 
 import human.HumanPlayer;
+import computerPlayer.ComputerPlayerR;
 import polygon.Point;
 import board.Board;
 import board.MarkerType;
@@ -24,6 +25,7 @@ public class Main {
 		/* Initialize players */
 		new HumanPlayer("Jason");
 		new HumanPlayer("Rick");
+		new ComputerPlayerR("Random Computer Player");
 		ArrayList<Player> playerList = Player.getPlayers();
 		
 		Board board = new Board();
